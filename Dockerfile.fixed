@@ -1,0 +1,12 @@
+FROM ubuntu:20.04
+RUN apt-get update && apt-get install -y python3.8 python3.8-pip
+COPY requirements.txt /app/
+WORKDIR /app
+RUN pip3.8 install -r requirements.txt
+COPY . /app
+CMD ["python3.8", "/app/main.py"]
+
+# .dockerignore
+*.log
+__pycache__
+.git
